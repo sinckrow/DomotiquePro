@@ -25,7 +25,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 public class ActivityShutters extends AppCompatActivity {
-    SeekBar s,s1,s2,s3,s4;
+    SeekBar s,s2,s3,s4;
     int progress_value;
 
     @Override
@@ -38,7 +38,6 @@ public class ActivityShutters extends AppCompatActivity {
         s4 = (SeekBar) findViewById(R.id.seekBar4);
 
         Button btn_liste = (Button) findViewById(R.id.btn_liste);
-        Toast.makeText(ActivityShutters.this, "test", Toast.LENGTH_SHORT).show();
 
         btn_liste.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -92,23 +91,80 @@ public class ActivityShutters extends AppCompatActivity {
             progress_value = seekBar.getProgress();
             if (progress_value == 100) {
                 seekBar.setProgress(50);
-                System.out.println("etatvolet : ferme volet");
-                final String libelle = "Tout fermer";
-                final String code = "ALL DOWN";
-                int i_captcha = 1;
-                actionSeekBar(libelle,code,i_captcha,"ferme tout les volets");
+                final String libelle = "fermer Ouest";
+                final String code = "OUEST DOWN";
+                int i_captcha = 0;
+                actionSeekBar(libelle,code,i_captcha,"ferme les volets coté Ouest");
             }
             if (progress_value == 0) {
                 seekBar.setProgress(50);
                 //int _id = 0;
-                final String libelle = "Tout ouvrir";
-                final String code = "ALL UP";
-                int i_captcha = 1;
-                actionSeekBar(libelle,code,i_captcha,"ouvre tout les volets ");
+                final String libelle = "ouvrir Ouest";
+                final String code = "OUEST UP";
+                int i_captcha = 0;
+                actionSeekBar(libelle,code,i_captcha,"ouvre les volets coté Ouest");
             }
 
         }
     });
+
+        s3.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    }
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        progress_value = seekBar.getProgress();
+                        if (progress_value == 100) {
+                            seekBar.setProgress(50);
+                            final String libelle = "fermer Est";
+                            final String code = "EST DOWN";
+                            int i_captcha = 0;
+                            actionSeekBar(libelle,code,i_captcha,"ferme les volets coté Est");
+                        }
+                        if (progress_value == 0) {
+                            seekBar.setProgress(50);
+                            //int _id = 0;
+                            final String libelle = "ouvrir Est";
+                            final String code = "EST UP";
+                            int i_captcha = 0;
+                            actionSeekBar(libelle,code,i_captcha,"ouvre les volets coté Est");
+                        }
+
+                    }
+                });
+        s4.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    }
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        progress_value = seekBar.getProgress();
+                        if (progress_value == 100) {
+                            seekBar.setProgress(50);
+                            final String libelle = "fermer Sud";
+                            final String code = "SUD DOWN";
+                            int i_captcha = 0;
+                            actionSeekBar(libelle,code,i_captcha,"ferme les volets coté Sud");
+                        }
+                        if (progress_value == 0) {
+                            seekBar.setProgress(50);
+                            final String libelle = "ouvrir Sud";
+                            final String code = "SUD UP";
+                            int i_captcha = 0;
+                            actionSeekBar(libelle,code,i_captcha,"ouvre les volets coté Sud");
+                        }
+
+                    }
+                });
 }
 
 
@@ -138,27 +194,18 @@ public class ActivityShutters extends AppCompatActivity {
             Toast.makeText(ActivityShutters.this, message, Toast.LENGTH_SHORT).show();
         } else {
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-            builder.setTitle("Envoyer cette action ?");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+
                     if ((numeroValue.length() > 0) && (compteurValue != -1)) {
                         sendSms(numeroValue, code, compteurValue, cheminCle);
+
                     } else {
                         Toast.makeText(ActivityShutters.this, "Erreur tel ou compteur not init", Toast.LENGTH_SHORT).show();
                     }
-                }
-            });
-            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-            builder.show();
             Toast.makeText(ActivityShutters.this, message, Toast.LENGTH_SHORT).show();
-        }
+                }
+
+
+
     }
 
     public void sendSms(String phoneNo, String actionCode, int counter,String cheminCle){
