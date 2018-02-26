@@ -88,8 +88,9 @@ public class ActivityAccueil extends AppCompatActivity {
                     builder.show();
                 }
                 else{
-                    Intent intent = new Intent(ActivityAccueil.this, ActivityListActions.class);
-                    startActivityForResult(intent, CODE_RESULT_ACTIONS);
+                    //Intent intent = new Intent(ActivityAccueil.this, ActivityListActions.class);
+                    Intent intent = new Intent(ActivityAccueil.this, ActivityShutters.class);
+                    startActivityForResult(intent, 15);
                 }
 
             }

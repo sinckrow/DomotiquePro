@@ -18,6 +18,7 @@ public class ActivityUsePswd extends AppCompatActivity {
 
     PatternLockView mPatternLockView;
     String password;
+    int pageVolet;
 
     @Override
     protected void onCreate ( Bundle savedInstanceState ){
@@ -40,7 +41,7 @@ public class ActivityUsePswd extends AppCompatActivity {
 
             @Override
             public void onComplete(List<PatternLockView.Dot> pattern) {
-                if ( password.equals( PatternLockUtils.patternToString(mPatternLockView, pattern) ) ){
+                if ( password.equals( PatternLockUtils.patternToString(mPatternLockView, pattern) ) ) {
                     Handler handler = new Handler();
 
                     boolean b = handler.postDelayed(new Runnable() {
@@ -52,22 +53,33 @@ public class ActivityUsePswd extends AppCompatActivity {
                             int compteurValue = intent.getIntExtra("compteurValue", 1);
                             String code = intent.getStringExtra("code");
                             String cheminCle = intent.getStringExtra("cheminCle");
+                            pageVolet = intent.getIntExtra("pageVolet",0);
+                            System.out.println("page numéro :"+pageVolet);
                             if ((numeroValue.length() > 0) && (compteurValue != -1)) {
 
-                                ala.sendSms(numeroValue, code, compteurValue,cheminCle);
+                                ala.sendSms(numeroValue, code, compteurValue, cheminCle);
 
                                 mPatternLockView.clearPattern();
                             } else {
                                 Toast.makeText(ActivityUsePswd.this, "Erreur tel ou compteur not init", Toast.LENGTH_SHORT).show();
                             }
+                            Intent intent2;
+                            System.out.println("page numéro dans if :"+pageVolet);
+                            if(pageVolet==1) {
+                                intent2 = new Intent( ActivityUsePswd.this, ActivityShutters.class);
+
+                            }else{
+                                intent2 = new Intent( ActivityUsePswd.this, ActivityListActions.class);
+
+                            }
+                            startActivity(intent2);
+                            finish();
 
                         }
                     }, 100);
-                    Intent intent = new Intent( ActivityUsePswd.this, ActivityListActions.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
+
+
+                }else {
                     Handler handler = new Handler();
                     handler.postDelayed( new Runnable() {
                         @Override

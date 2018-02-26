@@ -202,6 +202,7 @@ public class ActivityListActions extends Activity {
                 intent.putExtra("compteurValue", compteurValue);
                 intent.putExtra("code", code);
                 intent.putExtra("cheminCle",cheminCle);
+                intent.putExtra("pageVolet", 2);
                 startActivity(intent);
                 finish();
                 incrementationCompteur();

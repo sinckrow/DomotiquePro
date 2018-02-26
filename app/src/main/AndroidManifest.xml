@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityMenuOptions"/>
+        <activity android:name=".ActivityShutters"/>
         <activity android:name=".ActivityListActions"/>
         <activity android:name=".ActivityAjoutAction"/>
         <activity android:name=".ActivityEditActions"/>
