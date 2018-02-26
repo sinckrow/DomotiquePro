@@ -25,14 +25,18 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
 public class ActivityShutters extends AppCompatActivity {
-    SeekBar s4;
+    SeekBar s,s1,s2,s3,s4;
     int progress_value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shutters);
-        s4 = (SeekBar) findViewById(R.id.seekBar);
+        s = (SeekBar) findViewById(R.id.seekBar);
+        s2 = (SeekBar) findViewById(R.id.seekBar2);
+        s3 = (SeekBar) findViewById(R.id.seekBar3);
+        s4 = (SeekBar) findViewById(R.id.seekBar4);
+
         Button btn_liste = (Button) findViewById(R.id.btn_liste);
         Toast.makeText(ActivityShutters.this, "test", Toast.LENGTH_SHORT).show();
 
@@ -43,16 +47,14 @@ public class ActivityShutters extends AppCompatActivity {
                 startActivityForResult(intent, 2);
             }
         });
-        s4.setOnSeekBarChangeListener(
+        s.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     }
-
                     @Override
                     public void onStartTrackingTouch(SeekBar seekBar) {
                     }
-
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
                         progress_value = seekBar.getProgress();
@@ -75,7 +77,40 @@ public class ActivityShutters extends AppCompatActivity {
 
                     }
                 });
-    }
+
+
+    s2.setOnSeekBarChangeListener(
+            new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        }
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+        }
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            progress_value = seekBar.getProgress();
+            if (progress_value == 100) {
+                seekBar.setProgress(50);
+                System.out.println("etatvolet : ferme volet");
+                final String libelle = "Tout fermer";
+                final String code = "ALL DOWN";
+                int i_captcha = 1;
+                actionSeekBar(libelle,code,i_captcha,"ferme tout les volets");
+            }
+            if (progress_value == 0) {
+                seekBar.setProgress(50);
+                //int _id = 0;
+                final String libelle = "Tout ouvrir";
+                final String code = "ALL UP";
+                int i_captcha = 1;
+                actionSeekBar(libelle,code,i_captcha,"ouvre tout les volets ");
+            }
+
+        }
+    });
+}
+
 
 
     public void actionSeekBar(String libelle,final String code, int i_captcha,String message) {
