@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="#434343">
 
     <Space
         android:layout_width="match_parent"
@@ -14,6 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/activity_actions_display_label_libelle"
         android:textSize="35sp"
+        android:textColor="#fff"
         android:textStyle="bold"/>
 
     <Space
@@ -26,6 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/activity_actions_display_label_code"
         android:textSize="35sp"
+        android:textColor="#fff"
         android:textStyle="bold"/>
 
     <Space
@@ -34,12 +37,14 @@
 
     <CheckBox
         android:text="Captcha"
+        android:buttonTint="@android:color/white"
         android:textStyle="bold"
-        android:textSize="40sp"
+        android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/checkBox"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:textColor="#fff"/>
 
     <Space
         android:layout_width="match_parent"

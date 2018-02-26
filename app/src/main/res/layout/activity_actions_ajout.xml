@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp" >
+    android:padding="20dp"
+    android:background="#434343">
 
     <TextView
         android:id="@+id/activity_actions_ajouts_label_page"
@@ -12,6 +13,7 @@
         android:textSize="38sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="#fff"
         android:layout_marginBottom="30dp" />
 
     <TextView
@@ -21,6 +23,7 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:textColor="#fff"
         android:paddingBottom="10dp" />
 
     <EditText
@@ -29,7 +32,7 @@
         android:layout_height="40dp"
         android:inputType="text"
         android:ems="10"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/bg_01"
         android:hint="nom de l'action"
         android:padding="10dp"
         android:layout_marginBottom="30dp"/>
@@ -41,6 +44,7 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:textColor="#fff"
         android:paddingBottom="10dp" />
 
     <EditText
@@ -49,7 +53,7 @@
         android:layout_height="40dp"
         android:inputType="text"
         android:ems="10"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/bg_01"
         android:hint="code de l'action"
         android:padding="10dp"
         android:layout_marginBottom="30dp"/>
@@ -61,7 +65,8 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="10dp"
+        android:textColor="#fff"/>
 
     <EditText
         android:id="@+id/activity_actions_ajout_input_image_action"
@@ -69,7 +74,7 @@
         android:layout_height="40dp"
         android:inputType="text"
         android:ems="10"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/bg_01"
         android:hint="image qui représente l'action"
         android:padding="10dp"/>
 
@@ -80,7 +85,8 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:textColor="#fff"/>
 
     <Button
         android:text="Valider"
