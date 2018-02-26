@@ -9,6 +9,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.util.Base64;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -31,8 +33,16 @@ public class ActivityShutters extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shutters);
         s4 = (SeekBar) findViewById(R.id.seekBar);
+        Button btn_liste = (Button) findViewById(R.id.btn_liste);
         Toast.makeText(ActivityShutters.this, "test", Toast.LENGTH_SHORT).show();
 
+        btn_liste.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityShutters.this, ActivityListActions.class);
+                startActivityForResult(intent, 2);
+            }
+        });
         s4.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override

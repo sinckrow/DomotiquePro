@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#434343"
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -10,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Edition d'une action"
+        android:textColor="#fff"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -22,6 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Libelle de l'action"
+        android:textColor="#fff"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -47,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Code de l'action"
+        android:textColor="#fff"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -67,7 +71,9 @@
         android:id="@+id/activity_actions_edition_input_check_verif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:checked="false"
         android:text="Nécessite un schéma"
+        android:textColor="#fff"
         android:textSize="20sp" />
 
     <Space
