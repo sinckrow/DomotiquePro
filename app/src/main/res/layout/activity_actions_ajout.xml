@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/activity_actions_ajouts_label_page"
+        android:text="Ajouter une action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="30dp" />
+
+    <TextView
+        android:id="@+id/activity_actions_ajouts_label_libelle"
+        android:text="Titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp" />
+
+    <EditText
+        android:id="@+id/activity_actions_ajout_input_libelle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:inputType="text"
+        android:ems="10"
+        android:background="@android:color/darker_gray"
+        android:hint="nom de l'action"
+        android:padding="10dp"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/activity_actions_ajouts_label_code_action"
+        android:text="Code à exécuter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp" />
+
+    <EditText
+        android:id="@+id/activity_actions_ajout_input_code_action"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:inputType="text"
+        android:ems="10"
+        android:background="@android:color/darker_gray"
+        android:hint="code de l'action"
+        android:padding="10dp"
+        android:layout_marginBottom="30dp"/>
+
+    <TextView
+        android:id="@+id/activity_actions_ajouts_label_image_action"
+        android:text="Illustration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp" />
+
+    <EditText
+        android:id="@+id/activity_actions_ajout_input_image_action"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:inputType="text"
+        android:ems="10"
+        android:background="@android:color/darker_gray"
+        android:hint="image qui représente l'action"
+        android:padding="10dp"/>
+
+    <CheckBox
+        android:id="@+id/activity_actions_ajout_input_check_verif"
+        android:text="Sécuriser avec un schéma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:text="Valider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/activity_actions_ajout_btn_valider" />
+</LinearLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android           ="http://schemas.android.com/apk/res/android"
+    xmlns:app               ="http://schemas.android.com/apk/res-auto"
+    xmlns:tools             ="http://schemas.android.com/tools"
+    tools:context           ="l3pro20162017.domotiquepro.ActivityMenuOptions"
+    android:id              ="@+id/activity_options"
+    android:orientation     ="vertical"
+    android:layout_width    ="match_parent"
+    android:layout_height   ="match_parent"
+    android:textColor       ="#fff"
+    android:background      ="#434343"
+    android:padding         ="20dp">
+
+    <TextView
+        android:id                      ="@+id/activity_options_display_titre"
+        android:layout_width            ="wrap_content"
+        android:layout_height           ="wrap_content"
+        android:layout_alignParentTop   ="true"
+        android:layout_centerHorizontal ="true"
+        android:layout_gravity          ="center"
+        android:text                    ="Paramètres"
+        android:textSize                ="40sp"
+        android:textColor               ="#fff"/>
+
+    <TextView
+        android:id                      ="@+id/activity_options_label_numero"
+        android:layout_width            ="wrap_content"
+        android:layout_height           ="wrap_content"
+        android:layout_below            ="@+id/activity_options_display_titre"
+        android:text                    ="Numéro centrale"
+        android:textSize                ="25sp"
+        android:textColor               ="#fff"
+        android:layout_marginTop        ="50dp"
+        android:layout_marginBottom     ="5dp"/>
+
+    <EditText
+        android:id                      ="@+id/activity_options_input_numero"
+        android:layout_width            ="match_parent"
+        android:layout_height           ="35dp"
+        android:layout_below            ="@+id/activity_options_label_numero"
+        android:layout_centerHorizontal ="true"
+        android:inputType               ="number"
+        android:hint                    ="Numéro de la centrale domotique"
+        android:ems                     ="10"
+        android:background              ="@drawable/bg_01"
+        android:padding                 ="5dp"/>
+
+    <TextView
+        android:id                      ="@+id/activity_options_label_compteur"
+        android:layout_width            ="wrap_content"
+        android:layout_height           ="wrap_content"
+        android:layout_below            ="@+id/activity_options_input_numero"
+        android:text                    ="Compteur"
+        android:textSize                ="25sp"
+        android:textColor               ="#fff"
+        android:layout_marginTop        ="20dp"
+        android:layout_marginBottom     ="5dp"/>
+
+    <EditText
+        android:id                      ="@+id/activity_options_input_compteur"
+        android:layout_width            ="match_parent"
+        android:layout_height           ="35dp"
+        android:layout_below            ="@+id/activity_options_label_compteur"
+        android:layout_centerHorizontal ="true"
+        android:inputType               ="number"
+        android:hint                    ="Nombre d'échanges de messages"
+        android:ems                     ="10"
+        android:background              ="@drawable/bg_01"
+        android:padding                 ="5dp"/>
+
+
+    <TextView
+        android:id                      ="@+id/activity_options_label_clefp"
+        android:layout_width            ="wrap_content"
+        android:layout_height           ="wrap_content"
+        android:layout_below            ="@+id/activity_options_input_compteur"
+        android:text                    ="Clef Publique"
+        android:textSize                ="25sp"
+        android:textColor               ="#fff"
+        android:layout_marginTop        ="20dp"
+        android:layout_marginBottom     ="5dp"/>
+
+    <Button
+        android:id="@+id/activity_options_btn_valider"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/activity_option_btn_clefp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/btn_bg_00"
+        android:text="Valider"
+        android:textAllCaps="true"
+        android:textColor="#d2d2d2"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/activity_option_btn_clefp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/activity_options_btn_valider"
+        android:layout_below="@+id/activity_options_label_clefp"
+        android:text="ouvrir clef" />
+
+</RelativeLayout>

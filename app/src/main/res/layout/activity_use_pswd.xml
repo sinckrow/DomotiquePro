@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android           ="http://schemas.android.com/apk/res/android"
+    xmlns:app               ="http://schemas.android.com/apk/res-auto"
+    xmlns:tools             ="http://schemas.android.com/tools"
+    tools:context           ="l3pro20162017.domotiquepro.ActivityUsePswd"
+    android:id              ="@+id/activity_use_pswd"
+    android:orientation     ="vertical"
+    android:layout_width    ="match_parent"
+    android:layout_height   ="match_parent"
+    android:textColor       ="#fff"
+    android:background      ="#434343"
+    android:padding         ="20dp">
+
+    <TextView
+        android:id                      ="@+id/activity_use_pswd_nom_page"
+        android:layout_width            ="wrap_content"
+        android:layout_height           ="wrap_content"
+        android:layout_alignParentTop   ="true"
+        android:layout_centerHorizontal ="true"
+        android:layout_gravity          ="center"
+        android:text                    ="Entrez votre schéma"
+        android:textSize                ="30sp"
+        android:textColor               ="#fff"/>
+
+    <com.andrognito.patternlockview.PatternLockView
+        android:id                      ="@+id/pattern_lock_view"
+        android:layout_width            ="310dp"
+        android:layout_height           ="310dp"
+        android:layout_centerHorizontal ="true"
+        android:layout_centerVertical   ="true"
+        app:normalStateColor            ="#3d9bd1"
+        app:wrongStateColor             ="#a12121"
+        app:correctStateColor           ="#3ca31d"
+        app:dotNormalSize               ="12dp"
+        app:dotSelectedSize             ="20dp"
+        app:pathWidth                   ="7dp"
+        app:pathEndAnimationDuration    ="@android:integer/config_shortAnimTime"
+        app:dotAnimationDuration        ="@android:integer/config_shortAnimTime"
+        android:background              ="@drawable/bg_00"/>
+
+</RelativeLayout>

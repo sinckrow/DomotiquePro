@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android           ="http://schemas.android.com/apk/res/android"
+    xmlns:app               ="http://schemas.android.com/apk/res-auto"
+    xmlns:tools             ="http://schemas.android.com/tools"
+    tools:context           ="l3pro20162017.domotiquepro.ActivityListActions"
+    android:id              ="@+id/activity_list_actions"
+    android:orientation     ="vertical"
+    android:layout_width    ="match_parent"
+    android:layout_height   ="match_parent"
+    android:textColor       ="#fff"
+    android:background      ="#434343"
+    android:padding         ="20dp">
+
+    <RelativeLayout
+        android:id              ="@+id/L1"
+        android:layout_width    ="match_parent"
+        android:layout_height   ="wrap_content"
+        android:orientation     ="horizontal">
+
+        <TextView
+            android:id              ="@+id/activity_actions_home_label_page"
+            android:layout_width    ="wrap_content"
+            android:layout_height   ="wrap_content"
+            android:text            ="Actions"
+            android:textSize        ="45sp"
+            android:textColor       ="#fff"/>
+
+        <Button
+            android:id                      ="@+id/activity_actions_home_button_add_action"
+            android:layout_width            ="wrap_content"
+            android:layout_height           ="35dp"
+            android:layout_alignParentEnd   ="true"
+            android:layout_centerVertical   ="true"
+            android:background              ="@drawable/btn_bg_00"
+            android:text                    ="Créer"
+            android:textAllCaps             ="true"
+            android:textColor               ="#ffffff"
+            android:textSize                ="16sp"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id                  ="@+id/activity_actions_list_view"
+        android:layout_width        ="match_parent"
+        android:layout_height       ="match_parent"
+        android:layout_alignStart   ="@+id/L1"
+        android:layout_below        ="@+id/L1"
+        android:layout_marginTop    ="20dp"
+        android:background          ="@drawable/bg_01"/>
+
+</RelativeLayout>

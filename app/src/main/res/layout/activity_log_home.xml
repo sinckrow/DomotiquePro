@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android           ="http://schemas.android.com/apk/res/android"
+    xmlns:app               ="http://schemas.android.com/apk/res-auto"
+    xmlns:tools             ="http://schemas.android.com/tools"
+    tools:context           ="l3pro20162017.domotiquepro.ActivityListLog"
+    android:id              ="@+id/activity_list_log"
+    android:orientation     ="vertical"
+    android:layout_width    ="match_parent"
+    android:layout_height   ="match_parent"
+    android:textColor       ="#fff"
+    android:background      ="#434343"
+    android:padding         ="20dp">
+
+    <RelativeLayout
+        android:id              ="@+id/L1"
+        android:layout_width    ="match_parent"
+        android:layout_height   ="wrap_content"
+        android:orientation     ="horizontal">
+
+        <TextView
+            android:id              ="@+id/activity_logs_home_label_log"
+            android:layout_width    ="wrap_content"
+            android:layout_height   ="wrap_content"
+            android:text            ="Historique"
+            android:textSize        ="45sp"
+            android:textColor       ="#fff"/>
+
+        <Button
+            android:id                      ="@+id/activity_logs_home_btn_refresh"
+            android:layout_width            ="110dp"
+            android:layout_height           ="30dp"
+            android:layout_alignParentEnd   ="true"
+            android:layout_alignParentTop   ="true"
+            android:background              ="@drawable/btn_bg_00"
+            android:text                    ="Actualiser"
+            android:textAllCaps             ="true"
+            android:textColor               ="#d2d2d2"
+            android:textSize                ="16sp"
+            android:layout_marginTop        ="80dp" />
+
+        <Button
+            android:id                      ="@+id/activity_logs_home_btn_delete"
+            android:layout_width            ="60dp"
+            android:layout_height           ="30dp"
+            android:layout_alignParentEnd   ="true"
+            android:layout_alignParentTop   ="true"
+            android:background              ="@drawable/btn_bg_00"
+            android:text                    ="Vider"
+            android:textAllCaps             ="true"
+            android:textColor               ="#d2d2d2"
+            android:textSize                ="16sp"
+            android:layout_marginTop        ="80dp"
+            android:layout_marginEnd        ="120dp"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id                  ="@+id/activity_logs_home_list"
+        android:layout_width        ="match_parent"
+        android:layout_height       ="match_parent"
+        android:layout_alignStart   ="@+id/L1"
+        android:layout_below        ="@+id/L1"
+        android:layout_marginTop    ="10dp"
+        android:background          ="@drawable/bg_02"/>
+
+</RelativeLayout>
