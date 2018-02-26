@@ -36,7 +36,7 @@
         android:id="@+id/activity_actions_edition_input_libelle"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/bg_01"
         android:ems="10"
         android:hint="Libelle"
         android:inputType="textPersonName" />
@@ -58,7 +58,7 @@
         android:id="@+id/activity_actions_edition_input_code_action"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/bg_01"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName" />
@@ -74,7 +74,8 @@
         android:checked="false"
         android:text="Nécessite un schéma"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:buttonTint="@android:color/white"/>
 
     <Space
         android:layout_width="match_parent"
