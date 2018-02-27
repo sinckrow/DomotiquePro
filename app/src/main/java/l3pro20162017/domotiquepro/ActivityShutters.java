@@ -195,7 +195,7 @@ public class ActivityShutters extends AppCompatActivity {
         } else {
 
 
-                    if ((numeroValue.length() > 0) && (compteurValue != -1)) {
+                    if ((numeroValue.length() > 0) && (compteurValue != -1) && !cheminCle.isEmpty()) {
                         sendSms(numeroValue, code, compteurValue, cheminCle);
 
                     } else {

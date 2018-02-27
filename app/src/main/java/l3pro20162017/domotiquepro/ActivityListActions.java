@@ -214,7 +214,7 @@ public class ActivityListActions extends Activity {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                    if ((numeroValue.length()>0) && (compteurValue != -1)){
+                    if ((numeroValue.length()>0) && (compteurValue != -1) && !cheminCle.isEmpty()){
                         sendSms(numeroValue, code, compteurValue,cheminCle);
                     }
                     else{
