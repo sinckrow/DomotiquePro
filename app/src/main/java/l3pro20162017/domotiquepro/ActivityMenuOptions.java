@@ -46,6 +46,7 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
         editCompteur = (EditText)findViewById(R.id.activity_options_input_compteur);
         BtnClefPub=(Button)findViewById(R.id. activity_option_btn_clefp);
 
+
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
         compteurValue = preferences.getInt(KeyWords.COMPTEUR, -1);

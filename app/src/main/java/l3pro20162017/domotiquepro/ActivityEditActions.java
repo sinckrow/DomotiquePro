@@ -53,7 +53,7 @@ public class ActivityEditActions extends Activity {
 
         Button btn_update = (Button)findViewById(R.id.activity_actions_edition_btn_valider);
         Button btn_delete = (Button)findViewById(R.id.activity_actions_edition_btn_delete);
-
+        Button btnOption=(Button)findViewById((R.id.btn_option));
         btn_update.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -61,6 +61,12 @@ public class ActivityEditActions extends Activity {
                 finish();
             }
         });
+        btnOption.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+            }});
+
 
         btn_delete.setOnClickListener(new View.OnClickListener(){
             @Override
