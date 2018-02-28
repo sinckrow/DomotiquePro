@@ -6,6 +6,7 @@ public final class KeyWords {
     public static String NUMERO_TELEPHONE = "telephone";
     public static  String COMPTEUR = "compteur";
     public static String cheminCle = "cheminCle";
+    public static Boolean defaut = false;
 
     // ============ DATABASE ============
     public static  String DATABADE_NAME = "DomoPro.db";
