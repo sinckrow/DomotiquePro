@@ -81,7 +81,23 @@ public class ActivityAjoutAction extends Activity {
         }
         );
 
+        radioGroup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(radioGroup.getVisibility()== (View.INVISIBLE)) {
+                    radioGroup.setVisibility((View.VISIBLE));
 
+
+
+                }else {
+                    editTextNumber.setVisibility((View.INVISIBLE));
+                    editTextChaine.setVisibility((View.INVISIBLE));
+                    timepicker.setVisibility((View.INVISIBLE));
+
+                    radioGroup.setVisibility((View.INVISIBLE));
+                }
+            }
+        });
 
     }
 

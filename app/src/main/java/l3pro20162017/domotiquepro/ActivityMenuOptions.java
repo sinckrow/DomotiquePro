@@ -11,6 +11,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,8 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
     EditText editNumero;
     EditText editCompteur;
     Button BtnClefPub;
+    CheckBox cbxPageDefaut;
+    Boolean defaut;
 
     SharedPreferences preferencesContext;
     SharedPreferences.Editor editor;
@@ -45,12 +48,13 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
         editNumero = (EditText)findViewById(R.id.activity_options_input_numero);
         editCompteur = (EditText)findViewById(R.id.activity_options_input_compteur);
         BtnClefPub=(Button)findViewById(R.id. activity_option_btn_clefp);
-
+        cbxPageDefaut = (CheckBox)findViewById(R.id.cbxPageDefaut);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
         compteurValue = preferences.getInt(KeyWords.COMPTEUR, -1);
         cheminCle = preferences.getString(KeyWords.cheminCle, "");
+        defaut = preferences.getBoolean(String.valueOf(KeyWords.defaut),false);
 
 
         if (ContextCompat.checkSelfPermission(ActivityMenuOptions.this,
@@ -79,6 +83,11 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
         }else{
             BtnClefPub.setText("modifier");
         }
+        if(defaut==true){
+            cbxPageDefaut.setChecked(true);
+        }
+        else
+            cbxPageDefaut.setChecked(false);
 
         BtnClefPub.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -97,12 +106,18 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
             @Override
             public void onClick(View v) {
                 numeroValue = editNumero.getText().toString();
-                compteurValue = Integer.parseInt(editCompteur.getText().toString());
+                if(cbxPageDefaut.isChecked()){
+                    defaut=true;
+                }
+                else{
+                    defaut=false;
+                }
                 preferencesContext = PreferenceManager.getDefaultSharedPreferences(v.getContext());
                 editor = preferencesContext.edit();
                 editor.putString(KeyWords.NUMERO_TELEPHONE, numeroValue);
                 editor.putInt(KeyWords.COMPTEUR, compteurValue);
                 editor.putString(KeyWords.cheminCle, cheminCle);
+                editor.putBoolean(String.valueOf(KeyWords.defaut), defaut);
 
                 boolean isok = editor.commit();
                 if(isok)

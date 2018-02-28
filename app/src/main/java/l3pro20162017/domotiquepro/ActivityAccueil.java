@@ -23,6 +23,7 @@ public class ActivityAccueil extends AppCompatActivity {
     private static int CODE_RESULT_PSW = 4;
     String numero;
     int compteur;
+    Boolean defaut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,7 @@ public class ActivityAccueil extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         numero = preferences.getString(KeyWords.NUMERO_TELEPHONE,"");
         compteur = preferences.getInt(KeyWords.COMPTEUR,-1);
+        defaut = preferences.getBoolean(String.valueOf(KeyWords.defaut), false);
 
         Button btn_action = (Button) findViewById(R.id.activity_accueil_btn_action);
         Button btn_options = (Button) findViewById(R.id.activity_accueil_btn_options);
@@ -88,9 +90,20 @@ public class ActivityAccueil extends AppCompatActivity {
                     builder.show();
                 }
                 else{
+
                     //Intent intent = new Intent(ActivityAccueil.this, ActivityListActions.class);
-                    Intent intent = new Intent(ActivityAccueil.this, ActivityShutters.class);
-                    startActivityForResult(intent, 15);
+                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+                    defaut = preferences.getBoolean(String.valueOf(KeyWords.defaut), false);
+                    if(defaut==true){
+                        Intent intent = new Intent(ActivityAccueil.this, ActivityListActions.class);
+                        startActivityForResult(intent, CODE_RESULT_ACTIONS);
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(ActivityAccueil.this, ActivityShutters.class);
+                        startActivityForResult(intent, 15);
+                    }
+
                 }
 
             }

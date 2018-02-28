@@ -24,15 +24,15 @@
         android:textColor               ="#fff"/>
 
     <TextView
-        android:id                      ="@+id/activity_options_label_numero"
-        android:layout_width            ="wrap_content"
-        android:layout_height           ="wrap_content"
-        android:layout_below            ="@+id/activity_options_display_titre"
-        android:text                    ="Numéro centrale"
-        android:textSize                ="25sp"
-        android:textColor               ="#fff"
-        android:layout_marginTop        ="50dp"
-        android:layout_marginBottom     ="5dp"/>
+        android:id="@+id/activity_options_label_numero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/activity_options_display_titre"
+        android:layout_marginTop="24dp"
+        android:text="Numéro centrale"
+        android:textColor="#fff"
+        android:textSize="25sp" />
 
     <EditText
         android:id                      ="@+id/activity_options_input_numero"
@@ -85,9 +85,9 @@
         android:id="@+id/activity_options_btn_valider"
         android:layout_width="120dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/activity_option_btn_clefp"
+        android:layout_below="@+id/cbxPageDefaut"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="27dp"
         android:background="@drawable/btn_bg_00"
         android:text="Valider"
         android:textAllCaps="true"
@@ -101,5 +101,17 @@
         android:layout_alignStart="@+id/activity_options_btn_valider"
         android:layout_below="@+id/activity_options_label_clefp"
         android:text="ouvrir clef" />
+
+    <CheckBox
+        android:id="@+id/cbxPageDefaut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/activity_option_btn_clefp"
+        android:layout_marginTop="12dp"
+        android:buttonTint="@android:color/white"
+        android:text="Définir la liste des actions comme page par défaut pour les actions"
+        android:textColor="#fff"
+        android:textSize="18sp" />
 
 </RelativeLayout>

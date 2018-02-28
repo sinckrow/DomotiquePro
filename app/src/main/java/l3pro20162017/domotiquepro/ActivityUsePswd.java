@@ -55,7 +55,7 @@ public class ActivityUsePswd extends AppCompatActivity {
                             String cheminCle = intent.getStringExtra("cheminCle");
                             pageVolet = intent.getIntExtra("pageVolet",0);
                             System.out.println("page numéro :"+pageVolet);
-                            if ((numeroValue.length() > 0) && (compteurValue != -1)) {
+                            if ((numeroValue.length() > 0) && (compteurValue != -1) && !cheminCle.isEmpty()) {
 
                                 ala.sendSms(numeroValue, code, compteurValue, cheminCle);
 
