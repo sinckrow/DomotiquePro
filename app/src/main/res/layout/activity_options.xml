@@ -58,16 +58,16 @@
         android:layout_marginBottom     ="5dp"/>
 
     <EditText
-        android:id                      ="@+id/activity_options_input_compteur"
-        android:layout_width            ="match_parent"
-        android:layout_height           ="35dp"
-        android:layout_below            ="@+id/activity_options_label_compteur"
-        android:layout_centerHorizontal ="true"
-        android:inputType               ="number"
-        android:hint                    ="Nombre d'échanges de messages"
-        android:ems                     ="10"
-        android:background              ="@drawable/bg_01"
-        android:padding                 ="5dp"/>
+        android:id="@+id/activity_options_input_compteur"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/activity_options_label_compteur"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_01"
+        android:ems="10"
+        android:hint="Nombre d'échanges de messages"
+        android:inputType="number"
+        android:padding="5dp" />
 
 
     <TextView

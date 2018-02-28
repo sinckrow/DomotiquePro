@@ -44,6 +44,7 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+        getSupportActionBar().hide();
 
         editNumero = (EditText)findViewById(R.id.activity_options_input_numero);
         editCompteur = (EditText)findViewById(R.id.activity_options_input_compteur);
@@ -53,6 +54,7 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
         numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
         compteurValue = preferences.getInt(KeyWords.COMPTEUR, -1);
+        System.out.println("--------Compteur value base : "+compteurValue);
         cheminCle = preferences.getString(KeyWords.cheminCle, "");
         defaut = preferences.getBoolean(String.valueOf(KeyWords.defaut),false);
 
@@ -77,6 +79,7 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
 
         if (compteurValue != -1){
             editCompteur.setText(String.valueOf(compteurValue), TextView.BufferType.EDITABLE);
+            System.out.println("----------EDIT TEXT-----------------:"+String.valueOf(compteurValue));
         }
         if(cheminCle.isEmpty()){
             BtnClefPub.setText("ouvrir");
@@ -106,6 +109,7 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
             @Override
             public void onClick(View v) {
                 numeroValue = editNumero.getText().toString();
+                compteurValue=Integer.parseInt(editCompteur.getText().toString());
                 if(cbxPageDefaut.isChecked()){
                     defaut=true;
                 }
@@ -116,6 +120,7 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
                 editor = preferencesContext.edit();
                 editor.putString(KeyWords.NUMERO_TELEPHONE, numeroValue);
                 editor.putInt(KeyWords.COMPTEUR, compteurValue);
+                System.out.println("--------Compteur value modif : "+compteurValue);
                 editor.putString(KeyWords.cheminCle, cheminCle);
                 editor.putBoolean(String.valueOf(KeyWords.defaut), defaut);
 

@@ -32,6 +32,7 @@ public class ActivityShutters extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shutters);
+        getSupportActionBar().hide();
         s = (SeekBar) findViewById(R.id.seekBar);
         s2 = (SeekBar) findViewById(R.id.seekBar2);
         s3 = (SeekBar) findViewById(R.id.seekBar3);
