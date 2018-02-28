@@ -242,12 +242,8 @@ public class ActivityListActions extends Activity {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-<<<<<<< HEAD
-                    if ((numeroValue.length()>0) && (compteurValue != -1) && !cheminCle.isEmpty()){
-                        sendSms(numeroValue, code, compteurValue,cheminCle);
-=======
 
-                    if ((numeroValue.length()>0) && (compteurValue != -1)){
+                    if ((numeroValue.length()>0) && (compteurValue != -1) && !cheminCle.isEmpty()){
                         if(option) {
                             AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
                             Builder.setTitle("saisir un paramètre : ");
@@ -265,7 +261,6 @@ public class ActivityListActions extends Activity {
 
                             sendSms(numeroValue, code, compteurValue, cheminCle);
                         }
->>>>>>> 5f6aeb55d364bc5680a5c926e80b6a4b7d571f59
                     }
                     else{
                         Toast.makeText(ActivityListActions.this, "Erreur tel ou compteur not init" ,Toast.LENGTH_SHORT).show();

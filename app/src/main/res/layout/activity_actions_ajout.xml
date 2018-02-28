@@ -131,34 +131,16 @@
                     android:visibility="gone" />
 
             </RadioGroup>
-
-<<<<<<< HEAD
-            <CheckBox
-                android:id="@+id/activity_actions_ajout_input_check_verif"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="30dp"
-                android:text="Sécuriser avec un schéma"
-                android:textColor="#fff"
-                android:textSize="16sp" />
-=======
+            
     <CheckBox
         android:id="@+id/activity_actions_ajout_input_check_verif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-<<<<<<< HEAD
         android:buttonTint="@android:color/white"
-        android:textColor="#fff"/>
-=======
-        android:layout_marginTop="30dp"
         android:text="Sécuriser avec un schéma"
-        android:textColor="#fff"
-        android:textSize="16sp" />
->>>>>>> 5f6aeb55d364bc5680a5c926e80b6a4b7d571f59
->>>>>>> 633dbc521f2e9e5cbdf218face06e443b6dc7f75
-
+        android:textSize="16sp"
+        android:textColor="#fff"/>
     <Button
         android:text="Valider"
         android:layout_width="match_parent"
