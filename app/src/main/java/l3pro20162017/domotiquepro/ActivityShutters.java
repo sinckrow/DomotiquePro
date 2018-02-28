@@ -44,6 +44,7 @@ public class ActivityShutters extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityShutters.this, ActivityListActions.class);
                 startActivityForResult(intent, 2);
+                finish();
             }
         });
         s.setOnSeekBarChangeListener(

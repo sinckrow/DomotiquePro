@@ -97,6 +97,15 @@ public class ActivityListActions extends Activity {
                     startActivityForResult(intent, CODE_RESULT_CREATE);
                 }
             });
+            Button pageVolets = (Button) findViewById(R.id.volets);
+            pageVolets.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ActivityListActions.this, ActivityShutters.class);
+                    startActivityForResult(intent, 15);
+                    finish();
+                }
+            });
         }
         catch (Exception e)
         {
