@@ -71,7 +71,8 @@
                 android:id="@+id/activity_actions_ajout_input_check_option"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="paramètre supplémentaire" />
+                android:text="paramètre supplémentaire"
+                android:textColor="#fff" />
 
             <RadioGroup
                 android:id="@+id/activity_actions_ajout_RadioGroup"
@@ -131,15 +132,15 @@
 
             </RadioGroup>
 
-    <CheckBox
-        android:id="@+id/activity_actions_ajout_input_check_verif"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:text="Sécuriser avec un schéma"
-        android:textColor="#fff"
-        android:textSize="16sp" />
+            <CheckBox
+                android:id="@+id/activity_actions_ajout_input_check_verif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="30dp"
+                android:text="Sécuriser avec un schéma"
+                android:textColor="#fff"
+                android:textSize="16sp" />
 
     <Button
         android:text="Valider"
