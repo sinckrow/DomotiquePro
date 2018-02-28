@@ -89,9 +89,9 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
         if(defaut==true){
             cbxPageDefaut.setChecked(true);
         }
-        else
+        else {
             cbxPageDefaut.setChecked(false);
-
+        }
         BtnClefPub.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // You can use either OpenFileDialog or SaveFileDialog depending on your needs

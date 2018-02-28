@@ -189,7 +189,7 @@ public class ActivityListActions extends Activity {
             final String libelle = cursor.getString(1);
             final String code = cursor.getString(2);
             int i_captcha = cursor.getInt(3);
-            int i_option = cursor.getInt(4);
+            int i_option = cursor.getInt(3);
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
             final String numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
@@ -215,24 +215,47 @@ public class ActivityListActions extends Activity {
                 intent.putExtra("compteurValue", compteurValue);
 
 
+<<<<<<< HEAD
                 if (option) {
                     AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
                     Builder.setTitle("saisir un paramètre : ");
+=======
+                if(option) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setTitle("saisir un paramètre : ");
+>>>>>>> 4e50ef19d045a5f8a672764eaa6e1f0197d0f589
                     final EditText input = new EditText(v.getContext());
                     input.setInputType(InputType.TYPE_CLASS_TEXT);
-                    Builder.setView(input);
-                    Builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    builder.setView(input);
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             m_Text = input.getText().toString();
                         }
                     });
+<<<<<<< HEAD
                     intent.putExtra("optionCode", code + "," + m_Text);
                 } else {
                     intent.putExtra("code", code);
                 }
 
                 intent.putExtra("cheminCle", cheminCle);
+=======
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
+                    intent.putExtra("code", code+","+m_Text);
+
+                }else{
+
+                }
+                intent.putExtra("code", code);
+                intent.putExtra("cheminCle",cheminCle);
+>>>>>>> 4e50ef19d045a5f8a672764eaa6e1f0197d0f589
                 intent.putExtra("pageVolet", 2);
                 startActivity(intent);
                 finish();
