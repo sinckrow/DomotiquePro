@@ -116,7 +116,8 @@ public class ActivityListActions extends Activity {
                         String libelle = data.getStringExtra("libelle");
                         String code = data.getStringExtra("code");
                         boolean captcha = data.getBooleanExtra("captcha",false);
-                        dbHelper.insertAction(libelle, code, captcha);
+                        boolean option = data.getBooleanExtra("option",false);
+                        dbHelper.insertAction(libelle, code, captcha,option);
                         break;
                     case  RESULT_CANCELED:
                         Toast.makeText(this, "Ajout annulé", Toast.LENGTH_SHORT).show();
@@ -135,7 +136,8 @@ public class ActivityListActions extends Activity {
                             String libelle = data.getStringExtra("libelle");
                             String code = data.getStringExtra("code");
                             boolean captcha = data.getBooleanExtra("captcha",false);
-                            dbHelper.updateAction(id, libelle, code, captcha);
+                            boolean option = data.getBooleanExtra("option",false);
+                            dbHelper.updateAction(id, libelle, code, captcha,option);
                             Toast.makeText(this,"mis à jour", Toast.LENGTH_SHORT).show();
                         }
                         else if (action.equals("delete")){
@@ -183,6 +185,7 @@ public class ActivityListActions extends Activity {
             final String libelle = cursor.getString(1);
             final String code = cursor.getString(2);
             int i_captcha = cursor.getInt(3);
+            int i_option = cursor.getInt(4);
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
             final String numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
@@ -195,12 +198,36 @@ public class ActivityListActions extends Activity {
             else
                 captcha = false;
 
+            final boolean option;
+            if (i_option==1)
+                option = true;
+            else
+                option = false;
+
             if (captcha){
 
                 Intent intent = new Intent( getApplicationContext(), ActivityUsePswd.class);
                 intent.putExtra("numeroValue", numeroValue);
                 intent.putExtra("compteurValue", compteurValue);
-                intent.putExtra("code", code);
+
+
+                if(option) {
+                    AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
+                    Builder.setTitle("saisir un paramètre : ");
+                    final EditText input = new EditText(v.getContext());
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                    Builder.setView(input);
+                    Builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            m_Text = input.getText().toString();
+                        }
+                    });
+                    intent.putExtra("optionCode", code+","+m_Text);
+                }else{
+                    intent.putExtra("code", code);
+                }
+
                 intent.putExtra("cheminCle",cheminCle);
                 intent.putExtra("pageVolet", 2);
                 startActivity(intent);
@@ -209,13 +236,36 @@ public class ActivityListActions extends Activity {
             }
             else{
 
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("Envoyer cette action ?");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+<<<<<<< HEAD
                     if ((numeroValue.length()>0) && (compteurValue != -1) && !cheminCle.isEmpty()){
                         sendSms(numeroValue, code, compteurValue,cheminCle);
+=======
+
+                    if ((numeroValue.length()>0) && (compteurValue != -1)){
+                        if(option) {
+                            AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
+                            Builder.setTitle("saisir un paramètre : ");
+                            final EditText input = new EditText(v.getContext());
+                            input.setInputType(InputType.TYPE_CLASS_TEXT);
+                            Builder.setView(input);
+                            Builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    m_Text = input.getText().toString();
+                                }
+                            });
+                            sendSms(numeroValue, code+","+m_Text, compteurValue,cheminCle);
+                        }else {
+
+                            sendSms(numeroValue, code, compteurValue, cheminCle);
+                        }
+>>>>>>> 5f6aeb55d364bc5680a5c926e80b6a4b7d571f59
                     }
                     else{
                         Toast.makeText(ActivityListActions.this, "Erreur tel ou compteur not init" ,Toast.LENGTH_SHORT).show();
@@ -238,6 +288,7 @@ public class ActivityListActions extends Activity {
         long timestamp = System.currentTimeMillis()/1000;
         //String chemin = getFilesDir().getPath();
         String msg = actionCode+";"+timestamp+";"+counter;
+        System.out.println("message envoyer : "+msg);
         PublicKey clePublique = GestionCleRSA.lectureClePublique(cheminCle);
         String lemsg = "";
         byte[] bytes = null;

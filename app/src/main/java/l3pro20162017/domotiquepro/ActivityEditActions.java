@@ -17,12 +17,14 @@ public class ActivityEditActions extends Activity {
     EditText editLibelle;
     EditText editCode;
     CheckBox editCaptcha;
+    CheckBox editOption;
 
     int id;
     String libelle;
     String code;
     boolean captcha;
     int position;
+    boolean option;
 
 
     String action;
@@ -35,6 +37,7 @@ public class ActivityEditActions extends Activity {
         editLibelle = (EditText)findViewById(R.id.activity_actions_edition_input_libelle);
         editCode = (EditText)findViewById(R.id.activity_actions_edition_input_code_action);
         editCaptcha = (CheckBox)findViewById(R.id.activity_actions_edition_input_check_verif);
+        editOption = (CheckBox) findViewById(R.id.activity_actions_ajout_input_check_option2);
 
         id = getIntent().getIntExtra("id",0);
         libelle = getIntent().getStringExtra("libelle");
@@ -46,14 +49,22 @@ public class ActivityEditActions extends Activity {
         else
             captcha = false;
 
+        int intcOption = getIntent().getIntExtra("option",0);
+        if (intcCaptcha==1)
+            option = true;
+        else
+            option = false;
+
         editLibelle.setText(libelle, TextView.BufferType.EDITABLE);
         editCode.setText(code, TextView.BufferType.EDITABLE);
         editCaptcha.setChecked(captcha);
+        editOption.setChecked(option);
 
 
         Button btn_update = (Button)findViewById(R.id.activity_actions_edition_btn_valider);
         Button btn_delete = (Button)findViewById(R.id.activity_actions_edition_btn_delete);
-        Button btnOption=(Button)findViewById((R.id.btn_option));
+
+
         btn_update.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -61,11 +72,6 @@ public class ActivityEditActions extends Activity {
                 finish();
             }
         });
-        btnOption.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-
-            }});
 
 
         btn_delete.setOnClickListener(new View.OnClickListener(){
@@ -99,16 +105,20 @@ public class ActivityEditActions extends Activity {
             libelle = editLibelle.getText().toString();
             code = editCode.getText().toString();
             captcha = editCaptcha.isChecked();
+            option = editOption.isChecked();
+
             data.putExtra("id",id);
             data.putExtra("libelle", libelle);
             data.putExtra("code", code);
             data.putExtra("captcha", captcha);
+            data.putExtra("option", option);
         }
         else {
             data.putExtra("id",id);
             data.putExtra("libelle", libelle);
             data.putExtra("code", code);
             data.putExtra("captcha", captcha);
+            data.putExtra("option", option);
         }
         data.putExtra("position",position);
         data.putExtra("action", action);
