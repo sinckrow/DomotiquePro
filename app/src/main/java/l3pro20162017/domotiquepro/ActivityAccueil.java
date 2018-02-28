@@ -103,9 +103,7 @@ public class ActivityAccueil extends AppCompatActivity {
                         Intent intent = new Intent(ActivityAccueil.this, ActivityShutters.class);
                         startActivityForResult(intent, 15);
                     }
-
                 }
-
             }
         });
 

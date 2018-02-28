@@ -14,7 +14,7 @@ public final class KeyWords {
 
     public static String DATABASE_TABLE_ACTIONS = "actions";
     public  static  String CREATE_DATABASE_ACTIONS = "CREATE TABLE actions (_id INTEGER PRIMARY KEY " +
-            "AUTOINCREMENT, libelle TEXT NOT NULL, code TEXT NOT NULL, confirm BOOLEAN NOT NULL);";
+            "AUTOINCREMENT, libelle TEXT NOT NULL, code TEXT NOT NULL, confirm BOOLEAN NOT NULL, option BOOLEAN NOT NULL);";
 
     public static String DATABASE_TABLE_LOGS = "domo_logs";
     public static String CREATE_DATABASE_LOGS = "CREATE TABLE domo_logs (_id INTEGER PRIMARY KEY "+

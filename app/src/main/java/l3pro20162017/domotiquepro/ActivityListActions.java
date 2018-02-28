@@ -185,7 +185,7 @@ public class ActivityListActions extends Activity {
             final String libelle = cursor.getString(1);
             final String code = cursor.getString(2);
             int i_captcha = cursor.getInt(3);
-            int i_option = cursor.getInt(4);
+            int i_option = cursor.getInt(3);
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
             final String numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
@@ -212,22 +212,30 @@ public class ActivityListActions extends Activity {
 
 
                 if(option) {
-                    AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
-                    Builder.setTitle("saisir un paramètre : ");
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setTitle("saisir un paramètre : ");
                     final EditText input = new EditText(v.getContext());
                     input.setInputType(InputType.TYPE_CLASS_TEXT);
-                    Builder.setView(input);
-                    Builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    builder.setView(input);
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             m_Text = input.getText().toString();
                         }
                     });
-                    intent.putExtra("optionCode", code+","+m_Text);
-                }else{
-                    intent.putExtra("code", code);
-                }
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
+                    intent.putExtra("code", code+","+m_Text);
 
+                }else{
+
+                }
+                intent.putExtra("code", code);
                 intent.putExtra("cheminCle",cheminCle);
                 intent.putExtra("pageVolet", 2);
                 startActivity(intent);
