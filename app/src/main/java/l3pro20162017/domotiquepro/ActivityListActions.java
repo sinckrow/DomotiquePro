@@ -109,6 +109,7 @@ public class ActivityListActions extends Activity {
         }
         catch (Exception e)
         {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
         }
@@ -118,29 +119,41 @@ public class ActivityListActions extends Activity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         switch (requestCode){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
 
-            case CODE_RESULT_CREATE :
-                switch (resultCode){
+            case CODE_RESULT_CREATE:
+                switch (resultCode) {
                     case RESULT_OK:
                         String libelle = data.getStringExtra("libelle");
                         String code = data.getStringExtra("code");
+<<<<<<< HEAD
                         boolean captcha = data.getBooleanExtra("captcha",false);
 
                         dbHelper.insertAction(libelle, code, captcha);
+=======
+                        boolean captcha = data.getBooleanExtra("captcha", false);
+                        boolean option = data.getBooleanExtra("option", false);
+                        dbHelper.insertAction(libelle, code, captcha, option);
+>>>>>>> 76fc57e4a6328b0248724a6a4048cf565f225098
                         break;
                     case  RESULT_CANCELED:
+                    case RESULT_CANCELED:
                         Toast.makeText(this, "Ajout annulé", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
                 }
             break;
+                break;
 
             case CODE_RESULT_EDIT:
                 switch (resultCode){
+                switch (resultCode) {
                     case RESULT_OK:
                         String action = data.getStringExtra("action");
                         if (action.equals("update")){
+                        if (action.equals("update")) {
                             int id = data.getIntExtra("id", 0);
                             String libelle = data.getStringExtra("libelle");
                             String code = data.getStringExtra("code");
@@ -151,10 +164,17 @@ public class ActivityListActions extends Activity {
                         }
                         else if (action.equals("delete")){
                             int id = data.getIntExtra("id",0);
+=======
+                            boolean captcha = data.getBooleanExtra("captcha", false);
+                            boolean option = data.getBooleanExtra("option", false);
+                            dbHelper.updateAction(id, libelle, code, captcha, option);
+                            Toast.makeText(this, "mis à jour", Toast.LENGTH_SHORT).show();
+                        } else if (action.equals("delete")) {
+                            int id = data.getIntExtra("id", 0);
+>>>>>>> 76fc57e4a6328b0248724a6a4048cf565f225098
                             dbHelper.deleteAction(id);
-                            Toast.makeText(this,"delete", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                            Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show();
+                        } else {
                             Toast.makeText(this, "erreur", Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -166,19 +186,18 @@ public class ActivityListActions extends Activity {
             default:
                 break;
         }
-}
+    }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
-        switch (requestCode){
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
             case 1:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ContextCompat.checkSelfPermission(ActivityListActions.this,
-                            Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED){
+                            Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
                         Toast.makeText(this, "Permissions ok", Toast.LENGTH_SHORT).show();
                     }
-                }
-                else{
+                } else {
                     Toast.makeText(this, "Pas de permissions", Toast.LENGTH_SHORT).show();
                 }
                 return;
@@ -187,7 +206,7 @@ public class ActivityListActions extends Activity {
 
     class EcouteurClickListeAction implements AdapterView.OnItemClickListener {
         @Override
-        public void onItemClick (AdapterView<?> parent, final View v, int position, long id) {
+        public void onItemClick(AdapterView<?> parent, final View v, int position, long id) {
 
             cursor.moveToPosition(position);
             int _id = cursor.getInt(0);
@@ -199,32 +218,88 @@ public class ActivityListActions extends Activity {
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
             final String numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
             final int compteurValue = preferences.getInt(KeyWords.COMPTEUR, -1);
-            final String cheminCle = preferences.getString(KeyWords.cheminCle,"");
+            final String cheminCle = preferences.getString(KeyWords.cheminCle, "");
 
             boolean captcha;
-            if (i_captcha==1)
+            if (i_captcha == 1)
                 captcha = true;
             else
                 captcha = false;
 
+<<<<<<< HEAD
 
 
 
 
+=======
+            final boolean option;
+            if (i_option == 1)
+                option = true;
+            else
+                option = false;
+>>>>>>> 76fc57e4a6328b0248724a6a4048cf565f225098
 
-            if (captcha){
+            if (captcha) {
 
-                Intent intent = new Intent( getApplicationContext(), ActivityUsePswd.class);
+                Intent intent = new Intent(getApplicationContext(), ActivityUsePswd.class);
                 intent.putExtra("numeroValue", numeroValue);
                 intent.putExtra("compteurValue", compteurValue);
                 intent.putExtra("code", code);
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                if (option) {
+                    AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
+                    Builder.setTitle("saisir un paramètre : ");
+=======
+                if(option) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setTitle("saisir un paramètre : ");
+>>>>>>> 4e50ef19d045a5f8a672764eaa6e1f0197d0f589
+                    final EditText input = new EditText(v.getContext());
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                    builder.setView(input);
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            m_Text = input.getText().toString();
+                        }
+                    });
+<<<<<<< HEAD
+                    intent.putExtra("optionCode", code + "," + m_Text);
+                } else {
+                    intent.putExtra("code", code);
+                }
+
+                intent.putExtra("cheminCle", cheminCle);
+=======
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
+                    intent.putExtra("code", code+","+m_Text);
+
+                }else{
+
+                }
+>>>>>>> 76fc57e4a6328b0248724a6a4048cf565f225098
                 intent.putExtra("code", code);
                 intent.putExtra("cheminCle",cheminCle);
+>>>>>>> 4e50ef19d045a5f8a672764eaa6e1f0197d0f589
                 intent.putExtra("pageVolet", 2);
                 startActivity(intent);
                 finish();
+<<<<<<< HEAD
+=======
+                incrementationCompteur();
+            } else {
+
+>>>>>>> 76fc57e4a6328b0248724a6a4048cf565f225098
 
                 incrementationCompteur();
             }else{
@@ -234,14 +309,34 @@ public class ActivityListActions extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
+<<<<<<< HEAD
                     if ((numeroValue.length()>0) && (compteurValue != -1) && !cheminCle.isEmpty()){
 
                             sendSms(numeroValue, code, compteurValue, cheminCle);
 
-                    }
-                    else{
-                        Toast.makeText(ActivityListActions.this, "Erreur tel ou compteur not init" ,Toast.LENGTH_SHORT).show();
-                    }
+=======
+                        if ((numeroValue.length() > 0) && (compteurValue != -1) && !cheminCle.isEmpty()) {
+                            if (option) {
+                                AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
+                                Builder.setTitle("saisir un paramètre : ");
+                                final EditText input = new EditText(v.getContext());
+                                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                                Builder.setView(input);
+                                Builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        m_Text = input.getText().toString();
+                                    }
+                                });
+                                sendSms(numeroValue, code + "," + m_Text, compteurValue, cheminCle);
+                            } else {
+
+                                sendSms(numeroValue, code, compteurValue, cheminCle);
+                            }
+                        } else {
+                            Toast.makeText(ActivityListActions.this, "Erreur tel ou compteur not init", Toast.LENGTH_SHORT).show();
+                        }
+>>>>>>> 76fc57e4a6328b0248724a6a4048cf565f225098
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -255,12 +350,12 @@ public class ActivityListActions extends Activity {
         }
     }
 
-	public void sendSms(String phoneNo, String actionCode, int counter,String cheminCle){
+    public void sendSms(String phoneNo, String actionCode, int counter, String cheminCle) {
 
-        long timestamp = System.currentTimeMillis()/1000;
+        long timestamp = System.currentTimeMillis() / 1000;
         //String chemin = getFilesDir().getPath();
-        String msg = actionCode+";"+timestamp+";"+counter;
-        System.out.println("message envoyer : "+msg);
+        String msg = actionCode + ";" + timestamp + ";" + counter;
+        System.out.println("message envoyer : " + msg);
         PublicKey clePublique = GestionCleRSA.lectureClePublique(cheminCle);
         String lemsg = "";
         byte[] bytes = null;
@@ -268,21 +363,21 @@ public class ActivityListActions extends Activity {
             Cipher chiffreur = Cipher.getInstance("RSA/NONE/PKCS1Padding");
             chiffreur.init(Cipher.ENCRYPT_MODE, clePublique);
             bytes = chiffreur.doFinal(msg.getBytes("ISO-8859-2"));
-            lemsg = Base64.encodeToString(bytes,Base64.DEFAULT);
+            lemsg = Base64.encodeToString(bytes, Base64.DEFAULT);
 
-        } catch(NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             System.err.println("Erreur lors du chiffrement : " + e);
             System.exit(-1);
-        } catch(NoSuchPaddingException e) {
+        } catch (NoSuchPaddingException e) {
             System.err.println("Erreur lors du chiffrement : " + e);
             System.exit(-1);
-        } catch(InvalidKeyException e) {
+        } catch (InvalidKeyException e) {
             System.err.println("Erreur lors du chiffrement : " + e);
             System.exit(-1);
-        } catch(IllegalBlockSizeException e) {
+        } catch (IllegalBlockSizeException e) {
             System.err.println("Erreur lors du chiffrement : " + e);
             System.exit(-1);
-        } catch(BadPaddingException e) {
+        } catch (BadPaddingException e) {
             System.err.println("Erreur lors du chiffrement : " + e);
             System.exit(-1);
         } catch (UnsupportedEncodingException e) {
@@ -290,30 +385,29 @@ public class ActivityListActions extends Activity {
         }
 
         try {
-            SmsManager smsManager= SmsManager.getDefault();
+            SmsManager smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage(phoneNo, null, lemsg, null, null);
             //Toast.makeText(ActivityListActions.this, "Sms send "+lemsg ,Toast.LENGTH_SHORT).show();
             incrementationCompteur();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             //Toast.makeText(ActivityListActions.this, "Sms fail "+lemsg ,Toast.LENGTH_SHORT).show();
-            System.out.println("-------------------------------"+e);
+            System.out.println("-------------------------------" + e);
         }
     }
 
     private void incrementationCompteur() {
-        SharedPreferences preferences =  PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         System.out.println("-------------------OK");
         int compteur = preferences.getInt(KeyWords.COMPTEUR, -1);
         compteur++;
-        System.out.println("-------------------"+compteur);
+        System.out.println("-------------------" + compteur);
 
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt(KeyWords.COMPTEUR, compteur);
         editor.commit();
     }
 
-    class EcouteurLongClickListeAction implements  AdapterView.OnItemLongClickListener{
+    class EcouteurLongClickListeAction implements AdapterView.OnItemLongClickListener {
 
         @Override
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -326,7 +420,7 @@ public class ActivityListActions extends Activity {
             intent.putExtra("code", cursor.getString(2));
             intent.putExtra("captcha", cursor.getInt(3));
             startActivityForResult(intent, CODE_RESULT_EDIT);
-            return  true;
+            return true;
         }
     }
 }
