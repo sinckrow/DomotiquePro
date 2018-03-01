@@ -106,7 +106,9 @@ public class ActivityMenuOptions extends AppCompatActivity implements FileDialog
             @Override
             public void onClick(View v) {
                 numeroValue = editNumero.getText().toString();
+                compteurValue = Integer.parseInt(editCompteur.getText().toString());
                 if(cbxPageDefaut.isChecked()){
+
                     defaut=true;
                 }
                 else{

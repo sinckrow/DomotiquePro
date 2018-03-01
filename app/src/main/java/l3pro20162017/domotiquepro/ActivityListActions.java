@@ -125,8 +125,8 @@ public class ActivityListActions extends Activity {
                         String libelle = data.getStringExtra("libelle");
                         String code = data.getStringExtra("code");
                         boolean captcha = data.getBooleanExtra("captcha",false);
-                        boolean option = data.getBooleanExtra("option",false);
-                        dbHelper.insertAction(libelle, code, captcha,option);
+
+                        dbHelper.insertAction(libelle, code, captcha);
                         break;
                     case  RESULT_CANCELED:
                         Toast.makeText(this, "Ajout annulé", Toast.LENGTH_SHORT).show();
@@ -145,8 +145,8 @@ public class ActivityListActions extends Activity {
                             String libelle = data.getStringExtra("libelle");
                             String code = data.getStringExtra("code");
                             boolean captcha = data.getBooleanExtra("captcha",false);
-                            boolean option = data.getBooleanExtra("option",false);
-                            dbHelper.updateAction(id, libelle, code, captcha,option);
+
+                            dbHelper.updateAction(id, libelle, code, captcha);
                             Toast.makeText(this,"mis à jour", Toast.LENGTH_SHORT).show();
                         }
                         else if (action.equals("delete")){
@@ -194,7 +194,7 @@ public class ActivityListActions extends Activity {
             final String libelle = cursor.getString(1);
             final String code = cursor.getString(2);
             int i_captcha = cursor.getInt(3);
-            int i_option = cursor.getInt(3);
+
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(v.getContext());
             final String numeroValue = preferences.getString(KeyWords.NUMERO_TELEPHONE, "");
@@ -207,53 +207,27 @@ public class ActivityListActions extends Activity {
             else
                 captcha = false;
 
-            final boolean option;
-            if (i_option==1)
-                option = true;
-            else
-                option = false;
+
+
+
+
 
             if (captcha){
 
                 Intent intent = new Intent( getApplicationContext(), ActivityUsePswd.class);
                 intent.putExtra("numeroValue", numeroValue);
                 intent.putExtra("compteurValue", compteurValue);
+                intent.putExtra("code", code);
 
 
-                if(option) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                    builder.setTitle("saisir un paramètre : ");
-                    final EditText input = new EditText(v.getContext());
-                    input.setInputType(InputType.TYPE_CLASS_TEXT);
-                    builder.setView(input);
-                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            m_Text = input.getText().toString();
-                        }
-                    });
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    builder.show();
-                    intent.putExtra("code", code+","+m_Text);
-
-                }else{
-
-                }
                 intent.putExtra("code", code);
                 intent.putExtra("cheminCle",cheminCle);
                 intent.putExtra("pageVolet", 2);
                 startActivity(intent);
                 finish();
+
                 incrementationCompteur();
-            }
-            else{
-
-
+            }else{
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 builder.setTitle("Envoyer cette action ?");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -261,23 +235,9 @@ public class ActivityListActions extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
 
                     if ((numeroValue.length()>0) && (compteurValue != -1) && !cheminCle.isEmpty()){
-                        if(option) {
-                            AlertDialog.Builder Builder = new AlertDialog.Builder(v.getContext());
-                            Builder.setTitle("saisir un paramètre : ");
-                            final EditText input = new EditText(v.getContext());
-                            input.setInputType(InputType.TYPE_CLASS_TEXT);
-                            Builder.setView(input);
-                            Builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    m_Text = input.getText().toString();
-                                }
-                            });
-                            sendSms(numeroValue, code+","+m_Text, compteurValue,cheminCle);
-                        }else {
 
                             sendSms(numeroValue, code, compteurValue, cheminCle);
-                        }
+
                     }
                     else{
                         Toast.makeText(ActivityListActions.this, "Erreur tel ou compteur not init" ,Toast.LENGTH_SHORT).show();

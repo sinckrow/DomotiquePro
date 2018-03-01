@@ -39,65 +39,6 @@ public class ActivityAjoutAction extends Activity {
 
         final RadioGroup radioGroup  = (RadioGroup)findViewById(R.id.activity_actions_ajout_RadioGroup);
 
-       // check_option.setOnClickListener(new View.OnClickListener() {
-         //   @Override
-         //   public void onClick(View v) {
-
-               // if(radioGroup.getVisibility()== (View.GONE)) {
-                //    radioGroup.setVisibility((View.VISIBLE));
-                //    }else {
-                //    radioGroup.setVisibility((View.GONE));
-                // }
-         //   }
-       // });
-
-        radioGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int radiobuttonId = radioGroup.getCheckedRadioButtonId();
-                System.out.println("id : "+radiobuttonId);
-                RadioButton rb = (RadioButton) findViewById(radiobuttonId);
-                System.out.println("rbText : "+rb.getText());
-                if( rb.getText().equals("rb_nombre")) {
-                    editTextChaine.setVisibility((View.INVISIBLE));
-                    timepicker.setVisibility((View.INVISIBLE));
-                    editTextNumber.setVisibility((View.VISIBLE));
-
-                } else if(rb.getText().equals("rbChaine")){
-                    editTextNumber.setVisibility((View.INVISIBLE));
-                    timepicker.setVisibility((View.INVISIBLE));
-                    editTextChaine.setVisibility((View.VISIBLE));
-                }
-                else if (rb.getText().equals("rb_heure")) {
-                    editTextNumber.setVisibility((View.INVISIBLE));
-                    editTextChaine.setVisibility((View.INVISIBLE));
-                    timepicker.setVisibility((View.VISIBLE));
-                }else {
-                    editTextNumber.setVisibility((View.INVISIBLE));
-                    editTextChaine.setVisibility((View.INVISIBLE));
-                    timepicker.setVisibility((View.INVISIBLE));
-                }
-            }
-        }
-        );
-
-        radioGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(radioGroup.getVisibility()== (View.INVISIBLE)) {
-                    radioGroup.setVisibility((View.VISIBLE));
-
-
-
-                }else {
-                    editTextNumber.setVisibility((View.INVISIBLE));
-                    editTextChaine.setVisibility((View.INVISIBLE));
-                    timepicker.setVisibility((View.INVISIBLE));
-
-                    radioGroup.setVisibility((View.INVISIBLE));
-                }
-            }
-        });
 
     }
 
@@ -107,13 +48,11 @@ public class ActivityAjoutAction extends Activity {
         EditText edit_libelle = (EditText)findViewById(R.id.activity_actions_ajout_input_libelle);
         EditText edit_code = (EditText)findViewById(R.id.activity_actions_ajout_input_code_action);
         CheckBox edit_captcha = (CheckBox)findViewById(R.id.activity_actions_ajout_input_check_verif);
-        CheckBox check_option = (CheckBox) findViewById(R.id.activity_actions_ajout_input_check_option);
 
 
         String libelle = edit_libelle.getText().toString();
         String code = edit_code.getText().toString();
         boolean captcha = edit_captcha.isChecked();
-        boolean option = check_option.isChecked();
 
         if (libelle.trim().isEmpty() || code.trim().isEmpty()){
             Intent data = new Intent();
@@ -125,7 +64,6 @@ public class ActivityAjoutAction extends Activity {
             data.putExtra("libelle",libelle);
             data.putExtra("code",code);
             data.putExtra("captcha",captcha);
-            data.putExtra("option",option);
             setResult(RESULT_OK, data);
             super.finish();
         }

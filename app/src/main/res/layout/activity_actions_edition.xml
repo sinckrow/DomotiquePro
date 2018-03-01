@@ -78,12 +78,6 @@
         android:textSize="20sp"
         android:buttonTint="@android:color/white"/>
 
-    <CheckBox
-        android:id="@+id/activity_actions_ajout_input_check_option2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="paramètre supplémentaire" />
-
     <Space
         android:layout_width="match_parent"
         android:layout_height="30dp" />
